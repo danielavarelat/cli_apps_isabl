@@ -1,0 +1,2 @@
+# this will install in editable mode including the development dependencies
+-e .

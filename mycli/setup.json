@@ -1,0 +1,22 @@
+{
+    "classifiers": [
+        "Intended Audience :: Developers",
+        "Intended Audience :: Science/Research",
+        "License :: OSI Approved :: MIT License",
+        "Natural Language :: English",
+        "Operating System :: Unix",
+        "Operating System :: POSIX",
+        "Topic :: Utilities"
+    ],
+    "entry_points": {
+        "console_scripts": [
+            "mycli=mycli.cli:main"
+        ]
+    },
+    "author": "Daniela Varela T",
+    "license": "MIT",
+    "name": "mycli",
+    "long_description": "📘 learn more on `GitHub <https://github.com/danielavarelat/mycli>`_!",
+    "description": "mycli Isabl applications and logic.",
+    "url": "https://github.com/danielavarelat/mycli"
+}

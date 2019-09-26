@@ -1,0 +1,17 @@
+[paths]
+source =
+   isabl_cli
+   */isabl_cli
+
+[run]
+source =
+    isabl_cli
+
+omit =
+    *isabl_cli/__main__.py
+
+[report]
+exclude_lines =
+    pragma: no cover
+    if __name__ == .__main__.:
+    raise NotImplementedError

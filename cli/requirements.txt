@@ -1,0 +1,3 @@
+# install in editable mode including tests dependencies
+-e .
+-e .[test]
