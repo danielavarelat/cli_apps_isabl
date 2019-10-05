@@ -63,10 +63,8 @@ class Delly(AbstractApplication):
             self.get_bam(target),
         ]
         com = (" ".join(command))
-        return (com
-            + f" && bcftools view {outdir} > {outdirvcf}"
-        )
-
+        return com
+        
     def get_analysis_results(self, analysis):
         results = {
             "svs": join(analysis.storage_url, "delly.bcf"),
