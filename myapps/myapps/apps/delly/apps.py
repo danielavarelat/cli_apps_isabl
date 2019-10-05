@@ -50,8 +50,6 @@ class Delly(AbstractApplication):
         target = analysis.targets[0]
         reference = analysis.references[0]
         command = [
-	        "cd",
-     	    analysis.storage_url,
             settings.delly,
             "delly",
             "call",
@@ -64,7 +62,7 @@ class Delly(AbstractApplication):
         ]
         com = (" ".join(command))
         return com
-        
+
     def get_analysis_results(self, analysis):
         results = {
             "svs": join(analysis.storage_url, "delly.bcf"),
