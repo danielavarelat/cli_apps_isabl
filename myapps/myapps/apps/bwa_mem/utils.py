@@ -26,13 +26,16 @@ def get_bwa_mem_pl_results(analysis):
 def write_groupinfo(target, outdir, sample_name):
     """Return path of of groupsinfo.yaml if can be created, else None."""
     groups = {}
-    platform = target["sequencing_platform"]
-    center = target["sequencing_center"]
-    sequencing_data = []
+    platform = target["platform"]
+    center = target["center"]
+    raw_data = []
     groupinfo_path = None
 
-    for i in target["sequencing_data"]:
-        sequencing_data.append(i["file_url"])
+    for i in target["raw_data"]:
+        if i["file_type"] not in {"BAM", "FASTQ_R1", "FASTQ_R2"}:
+            continue
+
+        raw_data.append(i["file_url"])
         data = i["file_data"] or {}
         group = {}
 
@@ -53,4 +56,4 @@ def write_groupinfo(target, outdir, sample_name):
         with open(groupinfo_path, "w") as f:
             yaml.dump(groupinfo, f, default_flow_style=False)
 
-    return groupinfo_path, pcapcore.symlink_input_data(outdir, sequencing_data)
+    return groupinfo_path, pcapcore.symlink_input_data(outdir, raw_data)
