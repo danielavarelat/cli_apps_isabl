@@ -78,8 +78,8 @@ class Gridss(AbstractApplication):
             f"INPUT_LABEL={tumor.system_id} "
             f"OUTPUT={join(outdir, 'somatic.sv.vcf')} "
             f"ASSEMBLY={join(outdir, 'somatic.gridss.assembly.bam')} "
-            f"WORKER_THREADS={settings.cores} ",
-            f"sudo chown -R ec2-user {outdir} ",
+            f"WORKER_THREADS={settings.cores} "
+            f"&& sudo chown -R ec2-user {outdir}"
             f"&& rm -rf {join(outdir, f'{normal.system_id}.bam.gridss.working')} "
             f"&& rm -rf {join(outdir, f'{tumor.system_id}.bam.gridss.working')}"
         )
