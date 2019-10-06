@@ -72,6 +72,7 @@ class BwaMem(AbstractApplication):
 
         return (
             " ".join(map(str, command + sequencing_data))
+            + f" && sudo chown -R ec2-user {outdir}"
             # make sure index is older than bam
             + f" && touch {outdir}/{sample_name}.bam.bai"
         )

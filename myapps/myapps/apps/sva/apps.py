@@ -44,8 +44,6 @@ class Svaba(AbstractApplication):
         target = analysis.targets[0]
         reference = analysis.references[0]
         command = [
-	        "cd",
-     	    analysis.storage_url,
             settings.svab,
             "run",
             "-z",
