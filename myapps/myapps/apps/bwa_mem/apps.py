@@ -7,7 +7,6 @@ from . import constants
 from . import utils
 
 class BwaMem(AbstractApplication):
-
     NAME = "BWA_MEM"
     #VERSION = "0.7.17-r1188"
     VERSION = "1"
@@ -86,13 +85,12 @@ class BwaMem(AbstractApplication):
             analysis_pk=analysis["pk"],
         )
         return results
-class BwaMemGRCh37(BwaMem):
 
+class BwaMemGRCh37(BwaMem):
     ASSEMBLY = "GRCh37"
     SPECIES = "HUMAN"
 
 
-class BwaMemGRCm38(BwaMem):
-
+class BwaMemGRCh38(BwaMem):
     ASSEMBLY = "GRCh38"
     SPECIES = "HUMAN"
