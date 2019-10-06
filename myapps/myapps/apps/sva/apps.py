@@ -8,8 +8,8 @@ from myapps.utils import get_docker_command
 
 
 class Svaba(AbstractApplication):
-    ASSEMBLY = "GRCh37"
-    SPECIES = "HUMAN"
+    #ASSEMBLY = "GRCh37"
+    #SPECIES = "HUMAN"
     NAME = "SVABA"
     VERSION = "0.2.1"
 

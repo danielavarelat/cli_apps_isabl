@@ -11,8 +11,8 @@ class BwaMem(AbstractApplication):
     NAME = "BWA_MEM"
     #VERSION = "0.7.17-r1188"
     VERSION = "1"
-    ASSEMBLY = "GRCh37"
-    SPECIES = "HUMAN"
+    #ASSEMBLY = "GRCh37"
+    #SPECIES = "HUMAN"
     URL = "https://github.com/cancerit/PCAP-core/wiki/Scripts-Reference-implementations"
 
     cli_help = "Align DNA data with bwa-mem."
