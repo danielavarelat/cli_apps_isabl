@@ -11,8 +11,8 @@ class Delly(AbstractApplication):
     NAME = "DELLY"
     VERSION = "2"
 
-    #ASSEMBLY = "GRCh37"
-    #SPECIES = "HUMAN"
+    ASSEMBLY = "GRCh38"
+    SPECIES = "HUMAN"
     cli_help = "Find structural variants with GRIDSS."
     cli_options = [options.PAIRS, options.PAIRS_FROM_FILE]
     application_description = cli_help
@@ -28,7 +28,7 @@ class Delly(AbstractApplication):
     application_settings = {
         "delly": get_docker_command("dellytools/delly"),
         "reference": "reference_data_id:genome_fasta",
-        "cores": "16",
+        "cores": "4",
     }
 
 
@@ -46,7 +46,6 @@ class Delly(AbstractApplication):
 
     def get_command(self, analysis, inputs, settings):
         outdir = join(analysis.storage_url, "delly.bcf")
-        outdirvcf = join(analysis.storage_url, "delly.vcf")
         target = analysis.targets[0]
         reference = analysis.references[0]
         command = [
