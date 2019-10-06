@@ -73,3 +73,14 @@ class Svaba(AbstractApplication):
             assert isfile(i)
 
         return results
+
+class SvabaGRCh37(Svaba):
+
+    ASSEMBLY = "GRCh37"
+    SPECIES = "HUMAN"
+
+
+class SvabaGRCm38(Svaba):
+
+    ASSEMBLY = "GRCh38"
+    SPECIES = "HUMAN"

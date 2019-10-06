@@ -86,3 +86,13 @@ class BwaMem(AbstractApplication):
             analysis_pk=analysis["pk"],
         )
         return results
+class BwaMemGRCh37(BwaMem):
+
+    ASSEMBLY = "GRCh37"
+    SPECIES = "HUMAN"
+
+
+class BwaMemGRCm38(BwaMem):
+
+    ASSEMBLY = "GRCh38"
+    SPECIES = "HUMAN"

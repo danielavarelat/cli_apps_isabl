@@ -71,3 +71,14 @@ class Delly(AbstractApplication):
         for i in results.values():
             assert isfile(i), f"Missing result file {i}"
         return results
+        
+class DellyGRCh37(Delly):
+
+    ASSEMBLY = "GRCh37"
+    SPECIES = "HUMAN"
+
+
+class DellyGRCm38(Delly):
+
+    ASSEMBLY = "GRCh38"
+    SPECIES = "HUMAN"

@@ -66,7 +66,7 @@ class Gridss(AbstractApplication):
         outdir = analysis.storage_url
         tumor = analysis.targets[0]
         normal = analysis.references[0]
-        x="/home/danielavt/cli2/myapps/myapps/apps/gridss/config.txt"
+        #x="/home/danielavt/cli2/myapps/myapps/apps/gridss/config.txt"
         return (
             f"cd {outdir} &&"
             f"{settings.gridss} "
@@ -97,3 +97,14 @@ class Gridss(AbstractApplication):
             assert isfile(i), f"Missing result file {i}"
 
         return results
+
+class GridssGRCh37(Gridss):
+
+    ASSEMBLY = "GRCh37"
+    SPECIES = "HUMAN"
+
+
+class GridssGRCm38(Gridss):
+
+    ASSEMBLY = "GRCh38"
+    SPECIES = "HUMAN"
