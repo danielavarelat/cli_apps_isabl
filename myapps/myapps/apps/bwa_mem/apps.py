@@ -33,7 +33,7 @@ class BwaMem(AbstractApplication):
         self.validate_single_data_type(targets + references)
         self.validate_one_target_no_references(targets, references)
         self.validate_methods(targets, ["WG", "WE", "TD"])
-        assert not targets[0].is_pdx, "Use Disambiguate for PDX experiments"
+        #assert not targets[0].is_pdx, "Use Disambiguate for PDX experiments"
 
     def validate_settings(self, settings):
         self.validate_reference_genome(settings.reference)
