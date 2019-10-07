@@ -15,9 +15,8 @@ class Gridss(AbstractApplication):
 
     NAME = "GRIDSS"
     VERSION = "2.2.2"
-
-    #ASSEMBLY = "GRCh37"
-    #SPECIES = "HUMAN"
+    ASSEMBLY = "GRCh38"
+    SPECIES = "HUMAN"
     cli_help = "Find structural variants with GRIDSS."
     cli_options = [options.PAIRS, options.PAIRS_FROM_FILE]
     application_description = cli_help
@@ -46,7 +45,7 @@ class Gridss(AbstractApplication):
         "gridss": get_docker_command("papaemmelab/docker-gridss"),
         "config": config,
         "reference": "reference_data_id:genome_fasta",
-        "cores": "16",
+        "cores": "2",
     }
 
 
