@@ -4,7 +4,7 @@ from os.path import join
 
 from isabl_cli import AbstractApplication
 from isabl_cli import options
-from isabl_apps import constants
+from myapps import constants
 
 from myapps.utils import get_docker_command
 

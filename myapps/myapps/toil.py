@@ -4,7 +4,7 @@ from os.path import isdir
 from os.path import isfile
 from os.path import join
 
-from isabl_apps.utils import assert_same_owner
+from myapps.utils import assert_same_owner
 
 
 def build_toil_command(
