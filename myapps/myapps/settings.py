@@ -7,3 +7,8 @@ apps.BwaMemGRCh38().patch_application_settings(
             "cores": {"WG": 32, "WE": 32, "TD": 4},
         }
 )
+apps.Gridss().patch_application_settings(
+        **{
+            "config": constants.GRIDSS_CONFIG,
+        }
+)

@@ -4,12 +4,13 @@ from os.path import join
 
 from isabl_cli import AbstractApplication
 from isabl_cli import options
+from isabl_apps import constants
 
 from myapps.utils import get_docker_command
 
 #dirpath = os.getcwd()
 #config=join(dirpath,"config.txt")
-config="/home/danielavt/cli2/myapps/myapps/apps/gridss/config.txt"
+#config="/home/danielavt/cli2/myapps/myapps/apps/gridss/config.txt"
 
 class Gridss(AbstractApplication):
 
@@ -43,7 +44,6 @@ class Gridss(AbstractApplication):
     }
     application_settings = {
         "gridss": get_docker_command("papaemmelab/docker-gridss"),
-        "config": config,
         "reference": "reference_data_id:genome_fasta",
         "cores": "2",
     }
