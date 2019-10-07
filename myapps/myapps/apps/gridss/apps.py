@@ -8,9 +8,6 @@ from myapps import constants
 
 from myapps.utils import get_docker_command
 
-#dirpath = os.getcwd()
-#config=join(dirpath,"config.txt")
-#config="/home/danielavt/cli2/myapps/myapps/apps/gridss/config.txt"
 
 class Gridss(AbstractApplication):
 
@@ -43,6 +40,7 @@ class Gridss(AbstractApplication):
         },
     }
     application_settings = {
+        "config": NotImplemented,
         "gridss": get_docker_command("papaemmelab/docker-gridss"),
         "reference": "reference_data_id:genome_fasta",
         "cores": "1",
@@ -69,6 +67,7 @@ class Gridss(AbstractApplication):
         return (
             f"cd {outdir} &&"
             f"{settings.gridss} "
+            f"CONFIGURATION_FILE={settings.config} "
             f"WORKING_DIR={outdir} "
             f"REFERENCE_SEQUENCE={settings.reference} "
             f"INPUT={self.get_bam(normal)} "
