@@ -45,7 +45,7 @@ class Gridss(AbstractApplication):
     application_settings = {
         "gridss": get_docker_command("papaemmelab/docker-gridss"),
         "reference": "reference_data_id:genome_fasta",
-        "cores": "2",
+        "cores": "1",
     }
 
 
