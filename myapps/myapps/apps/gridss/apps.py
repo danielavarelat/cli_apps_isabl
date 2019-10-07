@@ -40,7 +40,7 @@ class Gridss(AbstractApplication):
         },
     }
     application_settings = {
-        "config": "/mnt/efs/cli_apps_isabl/myapps/myapps/apps/gridss/config.txt",
+        "config": "/mnt/efs/myisabl/config.txt",
         "gridss": get_docker_command("papaemmelab/docker-gridss"),
         "reference": "reference_data_id:genome_fasta",
         "cores": "1",
