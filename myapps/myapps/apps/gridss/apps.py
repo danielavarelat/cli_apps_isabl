@@ -41,6 +41,7 @@ class Gridss(AbstractApplication):
     }
     application_settings = {
         "config": "/mnt/efs/myisabl/config.txt",
+        "blacklist": "/mnt/efs/myisabl/wgEncodeDacMapabilityConsensusExcludable.bed",        
         "gridss": get_docker_command("papaemmelab/docker-gridss"),
         "reference": "reference_data_id:genome_fasta",
         "cores": "1",
@@ -65,7 +66,7 @@ class Gridss(AbstractApplication):
         normal = analysis.references[0]
         #x="/home/danielavt/cli2/myapps/myapps/apps/gridss/config.txt"
         return (
-            f"cd {outdir} &&"
+            f"cd {outdir} && "
             f"{settings.gridss} "
             f"CONFIGURATION_FILE={settings.config} "
             f"WORKING_DIR={outdir} "
@@ -76,6 +77,7 @@ class Gridss(AbstractApplication):
             f"INPUT_LABEL={tumor.system_id} "
             f"OUTPUT={join(outdir, 'somatic.sv.vcf')} "
             f"ASSEMBLY={join(outdir, 'somatic.gridss.assembly.bam')} "
+            f"BLACKLIST={settings.blacklist} "
             f"WORKER_THREADS={settings.cores} "
             f"&& sudo chown -R ec2-user {outdir}"
             f"&& rm -rf {join(outdir, f'{normal.system_id}.bam.gridss.working')} "
