@@ -9,7 +9,7 @@ from isabl_cli import api
 from isabl_cli import options
 from isabl_cli import exceptions
 
-from isabl_apps.utils import get_docker_command
+from myapps.utils import get_docker_command
 
 from .constants import BASE_APPLICATION_RESULTS
 from .constants import APPLICATION_RESULTS
