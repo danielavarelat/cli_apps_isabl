@@ -23,6 +23,9 @@ class QualityControl(AbstractApplication):
 
     NAME = "QC_DATA"
     VERSION = "0.1.0"
+    ASSEMBLY = "GRCh37"
+    SPECIES = "HUMAN"
+
 
     cli_help = "Get Quality Control metrics for NGS data."
     cli_options = [options.TARGETS]
