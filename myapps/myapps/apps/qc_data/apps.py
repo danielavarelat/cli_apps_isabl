@@ -56,8 +56,8 @@ class QualityControl(AbstractApplication):
         self.validate_bams(targets + references)
         self.validate_one_target_no_references(targets, references)
 
-        if targets[0].technique.analyte == "DNA":
-            self.validate_bedfiles(targets + references)
+        # if targets[0].technique.analyte == "DNA":
+        #     self.validate_bedfiles(targets + references)
 
         # msk specific validation
         for i in targets[0]["sequencing_data"]:
