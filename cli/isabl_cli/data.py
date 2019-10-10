@@ -492,8 +492,10 @@ class LocalBedImporter(BaseImporter):
         with open(path, "+w") as f:
             f.write(sorted_bed.decode("utf-8"))
 
-        subprocess.check_call(["bgzip", path])
-        subprocess.check_call(["tabix", "-p", "bed", path + ".gz"])
+        #subprocess.check_call(["bgzip", path])
+        subprocess.check_call([path])
+        subprocess.check_call(["tabix", "-p", "bed", path])
+        #subprocess.check_call(["tabix", "-p", "bed", path + ".gz"])
 
         with open(path, "+w") as f:  # write uncompressed file again
             f.write(sorted_bed.decode("utf-8"))
