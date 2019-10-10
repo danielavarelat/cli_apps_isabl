@@ -56,11 +56,11 @@ class QualityControl(AbstractApplication):
         self.validate_bams(targets + references)
         self.validate_one_target_no_references(targets, references)
 
-        # if targets[0].technique.analyte == "DNA":
-        #     self.validate_bedfiles(targets + references)
+        if targets[0].technique.category == "DNA":
+            self.validate_bedfiles(targets + references)
 
         # msk specific validation
-        for i in targets[0]["sequencing_data"]:
+        for i in targets[0]["raw_data"]:
             if i["file_type"].startswith("FASTQ") and i["file_url"]:
                 assert not i["file_url"].startswith(
                     "/warm"
@@ -84,7 +84,7 @@ class QualityControl(AbstractApplication):
         fastqc_cmds = []
         fastqc_input = join(fastqc_dir, f"{system_id}.fastq.gz")
 
-        for i in target["sequencing_data"]:
+        for i in target["raw_data"]:
             if i["file_type"].startswith("FASTQ"):
                 fastq = i["file_url"]
 
@@ -99,7 +99,7 @@ class QualityControl(AbstractApplication):
             commands += [f"rm {fastqc_input}"]
 
         # run picard for DNA data, bedfiles can't have a chr prefix
-        if target["technique"]["analyte"] == "DNA":
+        if target["technique"]["category"] == "DNA":
             commands.append(f"mkdir -p {picard_dir}")
             picard_cmd = f'{settings.picard} -j "{settings.java_args}" '
             picard_kwargs = dict(
@@ -117,7 +117,7 @@ class QualityControl(AbstractApplication):
                     commands.append(picard_cmd + i.format(**picard_kwargs))
 
         # run RNA-SeQC for RNA data
-        if target["technique"]["analyte"] == "RNA":
+        if target["technique"]["category"] == "RNA":
             if not settings.gtf or not settings.fasta_rrna:
                 raise exceptions.ConfigurationError(
                     "Settings 'gtf' and 'fastq_rrna' must be set"
@@ -162,7 +162,7 @@ class QualityControl(AbstractApplication):
                 continue
             assert True if i is None else isfile(i), f"Missing result {i}"
 
-        if target["technique"]["analyte"] == "DNA":
+        if target["technique"]["category"] == "DNA":
             read_length_column = "MEAN_READ_LENGTH"
             read_length_path = "multiqc_picard_AlignmentSummaryMetrics.txt"
             read_length_path = join(multiqc_data, read_length_path)
@@ -173,11 +173,13 @@ class QualityControl(AbstractApplication):
         with open(read_length_path) as f:
             row = next(csv.DictReader(f, delimiter="\t"))
             results["read_length"] = float(row[read_length_column])
-            api.patch_instance(
-                endpoint="experiments",
-                instance_id=target["pk"],
-                read_length=results["read_length"],
-            )
+
+            if "read_length" in target:
+                api.patch_instance(
+                    endpoint="experiments",
+                    instance_id=target["pk"],
+                    read_length=results["read_length"],
+                )
 
         return results
 
@@ -185,10 +187,6 @@ class QualityControl(AbstractApplication):
         assert (
             len(analyses) <= 500
         ), "Project level QC only valid for projects with lestt than 500 samples"
-
-    # -----------
-    # MERGE LOGIC
-    # -----------
 
     def get_project_analysis_results(self, analysis):
         return self.get_merged_results(analysis)
