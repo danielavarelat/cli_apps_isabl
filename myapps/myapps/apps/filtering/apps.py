@@ -69,6 +69,9 @@ class Filter(AbstractApplication):
     def get_experiments_from_cli_options(self, **cli_options):
         return [([i], []) for i in cli_options["targets"]]
 
+    def validate_experiments(self, targets, references):
+        self.validate_one_target_no_references(targets, references)
+
     def get_command(self, analysis, inputs, settings):
         outdir = analysis.storage_url
         outdir1 = join(outdir, "filt1.vcf")
