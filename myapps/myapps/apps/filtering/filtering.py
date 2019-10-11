@@ -9,6 +9,14 @@ parser.add_argument("-vcf2", "--vcf2", type=str, required=True, help="input vcf"
 parser.add_argument("-o1", "--output1", type=str, required=True, help="output vcf")
 parser.add_argument("-o2", "--output2", type=str, required=True, help="output vcf")
 
+
+def filter(vcf): 
+    newrecs = []
+    for rec in vcf.fetch():
+        if "PASS" in list(rec.filter.keys()):
+            newrecs.append(rec)
+    return newrecs
+
 def createfiles(vcf1,vcf2, out1, out2):
     v1=VariantFile(vcf1)
     v2=VariantFile(vcf2)
@@ -43,15 +51,10 @@ def prepare_merge(vcf1,vcf2):
             "30",
             out_merge,
         ]
-    cmd = (" ".join(command))
-    return cmd
+    #cmd = (" ".join(command))
+    return command
 
-def filter(vcf):
-    newrecs=[]
-    for rec in vcf.fetch():
-        if "PASS" in list(rec.filter.keys()):
-            newrecs.append(rec)
-    return newrecs
+
 if __name__ == "__main__":
     args = parser.parse_args()
     createfiles(args.vcf1, args.vcf2, args.o1, args.o2)

@@ -84,7 +84,7 @@ class Filter(AbstractApplication):
                     settings.filter,
                     "-vcf1",
                     inputs["gridss_vcf"],
-                    "-vcf1",
+                    "-vcf2",
                     "gridss",
                     inputs["delly_vcf"],
                     "-o1",
