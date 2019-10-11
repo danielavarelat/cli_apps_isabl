@@ -11,7 +11,7 @@ class BwaMem(AbstractApplication):
     #VERSION = "0.7.17-r1188"
     VERSION = "1"
     #ASSEMBLY = "GRCh38"
-    ASSEMBLY = "hg19"
+    ASSEMBLY = "hg19_2"
 
     SPECIES = "HUMAN"
     URL = "https://github.com/cancerit/PCAP-core/wiki/Scripts-Reference-implementations"

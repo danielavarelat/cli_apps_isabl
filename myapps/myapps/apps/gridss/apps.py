@@ -14,7 +14,7 @@ class Gridss(AbstractApplication):
     NAME = "GRIDSS"
     VERSION = "2.2.2"
     #ASSEMBLY = "GRCh38"
-    ASSEMBLY = "hg19"
+    ASSEMBLY = "hg19_2"
 
     SPECIES = "HUMAN"
     cli_help = "Find structural variants with GRIDSS."
