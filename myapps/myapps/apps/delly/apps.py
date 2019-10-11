@@ -10,7 +10,7 @@ class Delly(AbstractApplication):
 
     NAME = "DELLY"
     VERSION = "2"
-    ASSEMBLY = "hg19"
+    ASSEMBLY = "hg19_2"
 
     #ASSEMBLY = "GRCh38"
     SPECIES = "HUMAN"
