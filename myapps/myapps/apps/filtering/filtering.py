@@ -10,7 +10,7 @@ parser.add_argument("-o1", "--output1", type=str, required=True, help="output vc
 parser.add_argument("-o2", "--output2", type=str, required=True, help="output vcf")
 
 
-def filter(vcf): 
+def filtervcf(vcf): 
     newrecs = []
     for rec in vcf.fetch():
         if "PASS" in list(rec.filter.keys()):
@@ -24,8 +24,8 @@ def createfiles(vcf1,vcf2, out1, out2):
     #f2=os.path.join(os.path.dirname(vcf2), "filter2.vcf")
     outvcf1 = VariantFile(out1, 'w', header=v1.header)
     outvcf2 = VariantFile(out2, 'w', header=v2.header)
-    recs1 = filter(v1)
-    recs2 = filter(v2)
+    recs1 = filtervcf(v1)
+    recs2 = filtervcf(v2)
     for i in recs1:
         outvcf1.write(i)
     for j in recs2:

@@ -76,7 +76,6 @@ class Filter(AbstractApplication):
         outdir = analysis.storage_url
         outdir1 = join(outdir, "filt1.vcf")
         outdir2 = join(outdir, "filt2.vcf")
-
         return " ".join(
             map(
                 str,
