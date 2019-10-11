@@ -17,7 +17,9 @@ class Filter(AbstractApplication):
 
     SPECIES = "HUMAN"
     cli_help = "Filtering output of gridss and delly."
-    cli_options = [options.PAIRS, options.PAIRS_FROM_FILE]
+    #cli_options = [options.PAIRS, options.PAIRS_FROM_FILE]
+    cli_options = [options.TARGETS]
+
     application_description = cli_help
 
     application_results = {
@@ -65,7 +67,7 @@ class Filter(AbstractApplication):
         return analyses, inputs
 
     def get_experiments_from_cli_options(self, **cli_options):
-        return cli_options["pairs"] + cli_options["pairs_from_file"]
+        return [([i], []) for i in cli_options["targets"]]
 
     def get_command(self, analysis, inputs, settings):
         outdir = analysis.storage_url
