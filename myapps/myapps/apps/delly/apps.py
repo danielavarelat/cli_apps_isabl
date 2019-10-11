@@ -10,8 +10,9 @@ class Delly(AbstractApplication):
 
     NAME = "DELLY"
     VERSION = "2"
+    ASSEMBLY = "hg19"
 
-    ASSEMBLY = "GRCh38"
+    #ASSEMBLY = "GRCh38"
     SPECIES = "HUMAN"
     cli_help = "Find structural variants with GRIDSS."
     cli_options = [options.PAIRS, options.PAIRS_FROM_FILE]
