@@ -5,7 +5,7 @@ from isabl_cli import AbstractApplication
 from isabl_cli import options
 
 
-from myapps.apps.gridss.apps import Delly
+from myapps.apps.delly.apps import Delly
 from myapps.apps.gridss.apps import Gridss
 
 
