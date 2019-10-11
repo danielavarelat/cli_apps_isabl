@@ -8,3 +8,4 @@ from .bwa_mem.apps import BwaMemGRCh37
 from .gridss.apps import Gridss
 from .delly.apps import Delly
 from .qc_data.apps import QualityControl
+from .filtering.apps import Filter
