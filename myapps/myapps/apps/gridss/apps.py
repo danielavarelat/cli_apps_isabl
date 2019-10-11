@@ -13,7 +13,9 @@ class Gridss(AbstractApplication):
 
     NAME = "GRIDSS"
     VERSION = "2.2.2"
-    ASSEMBLY = "GRCh38"
+    #ASSEMBLY = "GRCh38"
+    ASSEMBLY = "hg19"
+
     SPECIES = "HUMAN"
     cli_help = "Find structural variants with GRIDSS."
     cli_options = [options.PAIRS, options.PAIRS_FROM_FILE]
