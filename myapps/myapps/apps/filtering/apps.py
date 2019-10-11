@@ -81,6 +81,7 @@ class Filter(AbstractApplication):
             map(
                 str,
                 [
+                    "python",
                     settings.filter,
                     "-vcf1",
                     inputs["gridss_vcf"],
