@@ -65,7 +65,7 @@ class Delly(AbstractApplication):
 
     def get_analysis_results(self, analysis):
         results = {
-            "svs": join(analysis.storage_url, "delly.bcf"),
+            "svs": join(analysis.storage_url, "delly.vcf"),
         }
 
         for i in results.values():
