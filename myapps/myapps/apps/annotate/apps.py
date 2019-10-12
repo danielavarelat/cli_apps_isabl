@@ -30,7 +30,7 @@ class Annot(AbstractApplication):
     }
     dir_path = dirname(realpath(__file__))
     application_settings = {
-        "svanno": "cd /mnt/efs/svanno &&",
+        "svanno": "cd /mnt/efs/myisabl/svanno &&",
         "cores": "1",
         "docker_pysam": get_docker_command("danielrbroad/pysamdocker"),
 
