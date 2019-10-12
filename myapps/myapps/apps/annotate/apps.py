@@ -80,7 +80,7 @@ class Annot(AbstractApplication):
                 [
                     settings.svanno,
                     settings.docker_pysam,
-                    "python svanno.py",
+                    "python /mnt/efs/myisabl/svanno/svanno.py",
                     "-i",
                     inp,
                     "-o",
