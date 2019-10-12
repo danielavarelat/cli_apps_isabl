@@ -9,3 +9,4 @@ from .gridss.apps import Gridss
 from .delly.apps import Delly
 from .qc_data.apps import QualityControl
 from .filtering.apps import Filter
+from .merge.apps import Merge
