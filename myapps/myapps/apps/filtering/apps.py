@@ -94,7 +94,7 @@ class Filter(AbstractApplication):
                     outdir1,
                     "-out2",
                     outdir2, 
-                    + f" && sudo chown -R ec2-user {outdir}",                   
+                    "&& sudo chown -R ec2-user {}".format(outdir),                   
                 ],
             )
         )
