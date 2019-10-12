@@ -11,3 +11,4 @@ from .qc_data.apps import QualityControl
 from .filtering.apps import Filter
 from .merge.apps import Merge
 from .annotate.apps import Annot
+from .circos_plot.apps import Circos
