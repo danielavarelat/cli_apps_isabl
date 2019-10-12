@@ -83,6 +83,7 @@ class Filter(AbstractApplication):
             map(
                 str,
                 [
+                    f"sudo chown -R ec2-user {outdir}",
                     settings.docker_pysam,
                     "python",
                     settings.script_filtering,
