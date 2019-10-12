@@ -57,7 +57,7 @@ def prepare_merge(vcf1,vcf2):
 
 if __name__ == "__main__":
     args = parser.parse_args()
-    createfiles(args.vcf1, args.vcf2, args.o1, args.o2)
+    createfiles(args.vcf1, args.vcf2, args.out1, args.out2)
     cmd = prepare_merge(args.vcf1, args.vcf2)
     print("Succesfully merged")
     print(cmd)
