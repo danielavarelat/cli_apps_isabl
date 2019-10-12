@@ -8,6 +8,8 @@ from isabl_cli import options
 from myapps.apps.delly.apps import Delly
 from myapps.apps.gridss.apps import Gridss
 
+from myapps.utils import get_docker_command
+
 
 class Filter(AbstractApplication):
 
@@ -32,7 +34,8 @@ class Filter(AbstractApplication):
     }
     dir_path = dirname(realpath(__file__))
     application_settings = {
-        "filter": join(dir_path, "filtering.py"),
+        "docker_pysam": get_docker_command("danielrbroad/pysamdocker"),
+        "script_filtering": join(dir_path, "filtering.py"),
         "cores": "1",
     }
 
@@ -80,8 +83,9 @@ class Filter(AbstractApplication):
             map(
                 str,
                 [
+                    settings.docker_pysam,
                     "python",
-                    settings.filter,
+                    settings.script_filtering,
                     "-vcf1",
                     inputs["gridss_vcf"],
                     "-vcf2",
