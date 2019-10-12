@@ -6,8 +6,8 @@ from pysam import VariantFile
 parser = argparse.ArgumentParser()
 parser.add_argument("-vcf1", "--vcf1", type=str, required=True, help="input vcf")
 parser.add_argument("-vcf2", "--vcf2", type=str, required=True, help="input vcf")
-parser.add_argument("-o1", "--output1", type=str, required=True, help="output vcf")
-parser.add_argument("-o2", "--output2", type=str, required=True, help="output vcf")
+parser.add_argument("-out1", "--out1", type=str, required=True, help="output vcf")
+parser.add_argument("-out2", "--out2", type=str, required=True, help="output vcf")
 
 
 def filtervcf(vcf): 
