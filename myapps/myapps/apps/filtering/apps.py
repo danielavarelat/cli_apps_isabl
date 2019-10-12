@@ -35,7 +35,7 @@ class Filter(AbstractApplication):
     dir_path = dirname(realpath(__file__))
     application_settings = {
         "docker_pysam": get_docker_command("danielrbroad/pysamdocker"),
-        "script_filtering": join(dir_path, "filtering.py"),
+        "script_filtering": "/mnt/efs/myisabl/filtering.py",
         "cores": "1",
     }
 
@@ -89,7 +89,6 @@ class Filter(AbstractApplication):
                     "-vcf1",
                     inputs["gridss_vcf"],
                     "-vcf2",
-                    "gridss",
                     inputs["delly_vcf"],
                     "-o1",
                     outdir1,
