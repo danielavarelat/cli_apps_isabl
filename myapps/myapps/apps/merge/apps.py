@@ -30,7 +30,7 @@ class Merge(AbstractApplication):
     }
     dir_path = dirname(realpath(__file__))
     application_settings = {
-        "survivor": "cd /home/ec2-user/SURVIVOR",
+        "survivor": "cd /home/ec2-user/SURVIVOR/Debug &&",
         "cores": "1",
     }
 
