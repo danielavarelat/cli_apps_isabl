@@ -90,9 +90,9 @@ class Filter(AbstractApplication):
                     inputs["gridss_vcf"],
                     "-vcf2",
                     inputs["delly_vcf"],
-                    "-o1",
+                    "-out1",
                     outdir1,
-                    "-o2",
+                    "-out2",
                     outdir2,                    
                 ],
             )
