@@ -83,7 +83,6 @@ class Filter(AbstractApplication):
             map(
                 str,
                 [
-                    f"sudo chown -R ec2-user {outdir}",
                     settings.docker_pysam,
                     "python",
                     settings.script_filtering,
@@ -94,14 +93,16 @@ class Filter(AbstractApplication):
                     "-out1",
                     outdir1,
                     "-out2",
-                    outdir2,                    
+                    outdir2, 
+                    + f" && sudo chown -R ec2-user {outdir}",                   
                 ],
             )
         )
 
     def get_analysis_results(self, analysis):
         results = {
-            "svs": join(analysis.storage_url, "delly.bcf"),
+            "svs": join(analysis.storage_url, "filt1.vcf"),
+            "svs2": join(analysis.storage_url, "filt2.vcf"),
         }
 
         for i in results.values():
