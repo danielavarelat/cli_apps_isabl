@@ -28,8 +28,9 @@ class Delly(AbstractApplication):
     }
     application_settings = {
         "delly": get_docker_command("dellytools/delly"),
+        "bcftools": get_docker_command("dceoy/bcftools"),
         "reference": "reference_data_id:genome_fasta",
-        "cores": "4",
+        "cores": "2",
     }
 
 
@@ -38,15 +39,15 @@ class Delly(AbstractApplication):
 
     def validate_experiments(self, targets, references):
         self.validate_bams(targets + references)
-        #self.validate_dna_pairs(targets, references)
         self.validate_same_technique(targets, references)
-        #self.validate_methods(targets + references, ["WG"])
 
     def validate_settings(self, settings):
         self.validate_reference_genome(settings.reference)
 
     def get_command(self, analysis, inputs, settings):
         outdir = join(analysis.storage_url, "delly.bcf")
+        outdirvcf = join(analysis.storage_url, "delly.vcf")
+
         target = analysis.targets[0]
         reference = analysis.references[0]
         command = [
@@ -60,8 +61,17 @@ class Delly(AbstractApplication):
             self.get_bam(reference),
             self.get_bam(target),
         ]
+        command2 = [
+            settings.bcftools,
+            "view",
+            outdir,
+            ">",
+            outdirvcf,            
+        ]
         com = (" ".join(command))
-        return com
+        cmd2 = (" ".join(command2))
+        return (com + f" && sudo touch {outdirvcf}" + f" && sudo chown -R ec2-user {outdirvcf}"
+        + f" && {cmd2}")
 
     def get_analysis_results(self, analysis):
         results = {
