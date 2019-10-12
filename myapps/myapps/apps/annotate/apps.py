@@ -32,8 +32,7 @@ class Annot(AbstractApplication):
     application_settings = {
         "svanno": "cd /mnt/efs/myisabl/svanno &&",
         "cores": "1",
-        "docker_pysam": get_docker_command("danielrbroad/pysamdocker"),
-
+        "docker_pysam": "docker run -it --entrypoint "" -v /mnt/efs/myisabl:/mnt/efs/myisabl danielrbroad/pysamdocker /bin/bash ",
     }
 
     @cached_property
@@ -80,6 +79,7 @@ class Annot(AbstractApplication):
                 [
                     settings.svanno,
                     settings.docker_pysam,
+                    "pip install requests &&"
                     "python /mnt/efs/myisabl/svanno/svanno.py",
                     "-i",
                     inp,
