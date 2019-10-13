@@ -78,7 +78,7 @@ class Annot(AbstractApplication):
                 str,
                 [
                     settings.docker_pysam,
-                    "pip install requests"
+                    "pip install requests",
                     settings.svanno,
                     "python /mnt/efs/myisabl/svanno/svanno.py",
                     "-i",
