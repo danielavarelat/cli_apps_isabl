@@ -80,7 +80,7 @@ class Circos(AbstractApplication):
             map(
                 str,
                 [
-                    settings.docker_pl,
+                    settings.docker_py,
                     settings.circos_prep,
                     "-cns",
                     settings.cns,
