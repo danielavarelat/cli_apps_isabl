@@ -91,7 +91,7 @@ class Annot(AbstractApplication):
 
     def get_analysis_results(self, analysis):
         results = {
-            "svs": join(analysis.storage_url, "merged.vcf"),
+            "svs": join(analysis.storage_url, "annotation.bed"),
         }
 
         for i in results.values():
