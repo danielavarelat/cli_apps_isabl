@@ -30,7 +30,6 @@ class Annot(AbstractApplication):
     }
     dir_path = dirname(realpath(__file__))
     application_settings = {
-        "svanno": "cd /mnt/efs/myisabl/svanno && ",
         "cores": "1",
         "docker_pysam": "docker run -it --entrypoint '' -v /mnt/efs/myisabl:/mnt/efs/myisabl danielrbroad/pysamdocker /bin/bash ",
     }
@@ -80,7 +79,6 @@ class Annot(AbstractApplication):
                 [
                     settings.docker_pysam,
                     "pip install requests",
-                    settings.svanno,
                     "python /mnt/efs/myisabl/svanno/svanno.py",
                     "-i",
                     inp,
