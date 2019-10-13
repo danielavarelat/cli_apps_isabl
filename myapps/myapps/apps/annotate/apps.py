@@ -32,7 +32,7 @@ class Annot(AbstractApplication):
     application_settings = {
         "svanno": "cd /mnt/efs/myisabl/svanno && ",
         "cores": "1",
-        "docker_pysam": "docker run -it --entrypoint "" -v /mnt/efs/myisabl:/mnt/efs/myisabl danielrbroad/pysamdocker /bin/bash ",
+        "docker_pysam": "docker run -it --entrypoint '' -v /mnt/efs/myisabl:/mnt/efs/myisabl danielrbroad/pysamdocker /bin/bash ",
     }
 
     @cached_property
@@ -71,6 +71,7 @@ class Annot(AbstractApplication):
 
     def get_command(self, analysis, inputs, settings):
         outdir = analysis.storage_url
+
         outbed = join(outdir, "annotation.bed")
         inp = inputs["merge"]
         return " ".join(
