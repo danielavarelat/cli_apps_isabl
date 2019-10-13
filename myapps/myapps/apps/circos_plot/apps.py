@@ -29,11 +29,12 @@ class Circos(AbstractApplication):
         }
     }
     application_settings = {
+        "docker_pysam": "docker run -it --entrypoint '' -v /mnt/efs/myisabl:/mnt/efs/myisabl danielrbroad/pysamdocker /bin/bash ",
         "make_circos": "/mnt/efs/myisabl/circos/make_circos.r",
         "circos_prep": "python /mnt/efs/myisabl/circos/circos_prep.py",
         "cores": "1",
         "docker_circos": get_docker_command("danielavarelat/circosr"),
-        "docker_py": get_docker_command("danielavarelat/circosr"),
+        "docker_py": get_docker_command("danielrbroad/pysamdocker"),
         "bed": "/mnt/efs/myisabl/circos/circos_genes.bed",
         "cns": "/mnt/efs/myisabl/circos/empty.cns",
     }
@@ -79,7 +80,7 @@ class Circos(AbstractApplication):
             map(
                 str,
                 [
-                    settings.docker_circos,
+                    settings.docker_pl,
                     settings.circos_prep,
                     "-cns",
                     settings.cns,
@@ -103,7 +104,6 @@ class Circos(AbstractApplication):
                 str,
                 [
                     cmd,
-                    settings.docker_py,
                     settings.make_circos,
                     circostsv,
                     settings.bed,
